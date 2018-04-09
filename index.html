@@ -1,0 +1,92 @@
+<html> 	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+		<title> Your Facebook Message Summary </title>
+
+		<script
+	  src="https://code.jquery.com/jquery-3.3.1.min.js"
+	  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	  crossorigin="anonymous"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+	  <script src="function.js"></script>
+
+	  <style>
+	  	body {
+	  		width: 80%;
+	  		margin: auto;
+	  		padding: 50px;
+	  		font-family: sans-serif;
+	  	}
+
+	  	.big {
+	  		font-size: 1.3em;
+	  	}
+
+	  	.under {
+	  		text-decoration: underline;
+	  	}
+
+	  	.fifty {
+	  		width: 50%;
+	  	}
+
+	  	#load {
+	  		font-size: 2em;
+	  		padding: 30px;
+	  		color: red;
+	  	}
+
+	  	#sent-type, #file-dist-res, #sent-count {
+	  		color: blue;
+	  	}
+
+	  	.space-it {
+	  		padding-top: 30px;
+	  	}
+
+	  	#basic-sent {
+	  		padding-top: 30px;
+	  	}
+	  </style>
+	</head>
+	<body>
+		<div id="load">
+			Processing...
+		</div>
+		<div id="main" style="display:none;">
+			<div class="big" id="general">
+				This script is aimed at visualizing some of the trends and general data about you from your facebook archive. All of these metrics could easily be calculated by facebook and be used to build a profile on your activity and personality. This analysis focuses on your messages and message data.
+			</div>
+			<div style="display:flex;">
+				<div>
+					<div id="file-dist">
+						<p class="big under">The distribution of files you send</p>
+						<p id="file-dist-main">You have <span id="file-dist-res"></span> recorded conversations.</span></p>
+					</div>
+					<canvas id="file-dist-pie" width="400" height="400"></canvas>
+				</div>
+
+				<div>
+					<div id="msg-time">
+						<p class="big under">The times of day that you send messages and communicate</p>
+						<p>This is a graph of the amount of messages you sent in the day (8-20 hours) or night(0-8, 20-24 hours)</p>
+					</div>
+					<canvas id="msg-time-dough" width="400" height="400"></canvas>
+				</div>
+			</div>
+
+			<div id="basic-sent">
+				This a basic sentiment analysis of all of your messages. I looked at every message in your conversations and looked for the keywords: "lol", "haha", "ha", "ahah", lmao", "rofl", and ":)" to determine generally how happy you are.
+				<div class="space-it">
+					You sent those collective messages: <span id="sent-count"></span> times. Based on a formula I made up which is:
+						<blockquote>
+							(happy keywords above)/(total words sent)
+						</blockquote>
+					I have quantified you as a <span id="sent-type"></span> person.
+				</div>
+			</div>
+		</div>
+		<div id="hidden-div" style="display:none;"></div>
+	</body>
+</html>
